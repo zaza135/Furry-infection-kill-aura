@@ -1,0 +1,58 @@
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+Rayfield:Notify({
+   Title = "Join our discord for future updates!",
+   Content = "dsc.gg/vibersploit",
+   Duration = 6.5,
+   Image = 4483362458,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Ok nerd⚡",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+
+local Window = Rayfield:CreateWindow({
+    Name = "Odyssey Hub🌠| star.odyssey.",
+    LoadingTitle = "Odyssey Hub🌠",
+    LoadingSubtitle = "by star.odyssey.",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "OdysseyHub"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD.
+       RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = false, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Odyssey Hub🌠| star.odyssey. ",
+       Subtitle = "Key System",
+       Note = "Join the discord (dsc.gg/vibersploit)",
+       FileName = "SiriusKey",
+       SaveKey = true,
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = "king"
+    }
+ })
+ local Tab = Window:CreateTab("Games", 4483362458) -- Title, Image
+ local Section = Tab:CreateSection("Choose your game")
+
+ local Button = Tab:CreateButton({
+    Name = "Furry Infection",
+    Callback =       function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/zaza135/Furry-infection-kill-aura/main/kill%20aura', true))()
+    end,
+ })
+ local Button = Tab:CreateButton({
+    Name = "Da Hood Oddysey hub",
+    Callback =       function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/zaza135/Furry-infection-kill-aura/main/oddysey%20hub', true))()
+    end,
+ })
