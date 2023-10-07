@@ -1,0 +1,69 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local camera = workspace.CurrentCamera
+
+local Tracers = {}
+local tracerEnabled = true  -- Variable to track if tracers are enabled
+
+function createTracer(player)
+    local Tracer = Drawing.new("Line")
+    Tracer.Visible = false
+    Tracer.Color = Color3.new(0.5, 0, 0.5) -- Change color to purple
+    Tracer.Thickness = 1
+    Tracer.Transparency = 1
+    Tracers[player.UserId] = Tracer
+end
+
+function removeTracer(player)
+    local Tracer = Tracers[player.UserId]
+    if Tracer then
+        Tracer.Visible = false
+        Tracers[player.UserId] = nil
+        Tracer:Remove()
+    end
+end
+
+function toggleTracers()
+    tracerEnabled = not tracerEnabled
+    for _, Tracer in pairs(Tracers) do
+        Tracer.Visible = tracerEnabled
+    end
+end
+
+function updateTracers()
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= Players.LocalPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            local Vector, OnScreen = camera:WorldToViewportPoint(player.Character.HumanoidRootPart.Position)
+            if OnScreen then
+                local Tracer = Tracers[player.UserId]
+                if not Tracer then
+                    createTracer(player)
+                    Tracer = Tracers[player.UserId]
+                end
+                Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 2)
+                Tracer.To = Vector2.new(Vector.X, Vector.Y)
+                Tracer.Visible = tracerEnabled
+            else
+                removeTracer(player)
+            end
+        else
+            removeTracer(player)
+        end
+    end
+end
+
+-- Connect the updateTracers function to the RenderStepped event
+RunService.RenderStepped:Connect(updateTracers)
+
+-- Handle player removal to remove tracers
+Players.PlayerRemoving:Connect(function(player)
+    removeTracer(player)
+end)
+
+-- Toggle tracers on/off with the H key
+UserInputService.InputBegan:Connect(function(input)
+    if input.KeyCode == Enum.KeyCode.H then
+        toggleTracers()
+    end
+end)
