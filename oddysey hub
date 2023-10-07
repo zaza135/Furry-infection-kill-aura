@@ -1,0 +1,425 @@
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+Rayfield:Notify({
+   Title = "Join our discord for future updates!",
+   Content = "dsc.gg/vibersploit",
+   Duration = 6.5,
+   Image = 4483362458,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Ok nerd⚡",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+
+local Window = Rayfield:CreateWindow({
+    Name = "Odyssey Hub🌠| star.odyssey.",
+    LoadingTitle = "Hold on to you balls, we loading up this bitch",
+    LoadingSubtitle = "by star.odyssey.",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, -- Create a custom folder for your hub/game
+       FileName = "OdysseyHub"
+    },
+    Discord = {
+       Enabled = false,
+       Invite = "", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD.
+       RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+    },
+    KeySystem = false, -- Set this to true to use our key system
+    KeySettings = {
+       Title = "Odyssey Hub🌠| star.odyssey. ",
+       Subtitle = "Key System",
+       Note = "Join the discord (dsc.gg/vibersploit)",
+       FileName = "SiriusKey",
+       SaveKey = true,
+       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+       Key = "king"
+    }
+ })
+ local Tab = Window:CreateTab("Hubs", 4483362458) -- Title, Image
+ local Section = Tab:CreateSection("Credits to the owners of these hubs/scripts")
+
+ local Button = Tab:CreateButton({
+    Name = "(OP) Pluto Hub",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Scrvpter/Pluto/Lua/Loader.Lua', true))()
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Zapped Hub",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/grekkk/relases/main/zapped.lua'))()
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "SwagMode",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagModeV002'))()
+    end,
+ })
+ local Button = Tab:CreateButton({
+    Name = "Faded",
+    Callback = function()
+        _G.Toggles = "V" -- You can put any keybind
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
+    end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "RAYX Hub",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceYes/Lua/Main/DaHood.Lua'))()
+    end,
+ })
+
+ local Tab = Window:CreateTab("Aiming", 4483362458) -- Title, Image
+ local Section = Tab:CreateSection("Lock")
+
+ local Button = Tab:CreateButton({
+    Name = "HitBox Lock (Q to lock and unlock) ",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/4PbXMqY8", true))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Monke Hitbox ",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/HCcG5pf6", true))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Best lock",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/bxvlz2/bxvlz/main/lock.lua"))()
+      end,
+ })
+
+  local Button = Tab:CreateButton({
+    Name = "Flash Lock",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/1ijraFki"))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "CloudWare Lock",
+    Callback = function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/FjpGLfDz'))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Blue hitbox lock (Q to lock and unlock) ",
+    Callback = function()
+    -- Toggle
+getgenv().Target = true
+
+-- Configuration
+getgenv().Key = Enum.KeyCode.Q
+getgenv().Prediction = 0.160126357
+getgenv().ChatMode = false
+getgenv().NotifMode = true
+    getgenv().PartMode = true
+    getgenv().AirshotFunccc = false
+    getgenv().Partz = "HumanoidRootPart"
+getgenv().AutoPrediction = false
+getgenv().Fov = 100
+getgenv().Circle = true
+--
+    _G.Types = {
+        Ball = Enum.PartType.Ball,
+        Block = Enum.PartType.Block, 
+        Cylinder = Enum.PartType.Cylinder
+    }
+    
+    --variables                 
+    	local Tracer = Instance.new("Part", game.Workspace)
+    Tracer.Name = "gay"	
+    Tracer.Anchored = true		
+    Tracer.CanCollide = false
+    Tracer.Transparency = 0.3
+    Tracer.Parent = game.Workspace	
+    Tracer.Shape = _G.Types.Block
+    Tracer.Size = Vector3.new(7,7,7)
+    Tracer.Color = Color3.fromRGB(0, 0, 139)
+    
+    --
+    local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+local Runserv = game:GetService("RunService")
+
+circle = Drawing.new("Circle")
+circle.Color = Color3.fromRGB(25,25,25)
+circle.Thickness = 0
+circle.NumSides = 732
+circle.Radius = getgenv().Fov
+circle.Thickness = 0
+circle.Transparency = 0
+circle.Visible = getgenv().Circle
+circle.Filled = false
+
+Runserv.RenderStepped:Connect(function()
+    circle.Position = Vector2.new(mouse.X,mouse.Y+35)
+    if getgenv().AirshotFunccc == true then
+            if Plr ~= nil then else return; end
+            if Plr.Character.Humanoid.Jump == true and Plr.Character.Humanoid.FloorMaterial == Enum.Material.Air then
+                getgenv().Partz = "RightFoot"
+            else
+                Plr.Character:WaitForChild("Humanoid").StateChanged:Connect(function(old,new)
+                    if new == Enum.HumanoidStateType.Freefall then
+                    getgenv().Partz = "RightFoot"
+                    else
+                        getgenv().Partz = "HumanoidRootPart"
+                    end
+                end)
+            end
+end
+end)
+    
+    	local guimain = Instance.new("Folder", game.CoreGui)
+    	local CC = game:GetService"Workspace".CurrentCamera
+    local LocalMouse = game.Players.LocalPlayer:GetMouse()
+    	local Locking = false
+    
+    	
+    --
+    if getgenv().valiansh == true then
+                        game.StarterGui:SetCore("SendNotification", {
+                   Title = "funxpyware.cc",
+                   Text = "Already Loaded!",
+                   Duration = 5
+        
+                   })
+        return
+    end
+    
+    getgenv().valiansh = true
+    
+        local UserInputService = game:GetService("UserInputService")
+
+    UserInputService.InputBegan:Connect(function(keygo,ok)
+           if (not ok) then
+           if (keygo.KeyCode == getgenv().Key) then
+               if getgenv().Target == true then
+               Locking = not Locking
+               
+               if Locking then
+               Plr =  getClosestPlayerToCursor()
+                if getgenv().ChatMode then
+        local A_1 = "Target: "..tostring(Plr.Character.Humanoid.DisplayName) local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
+        	end	
+               if getgenv().NotifMode then
+    			game.StarterGui:SetCore("SendNotification", {
+        Title = "funxpyware.cc";
+        Text = "Target: "..tostring(Plr.Character.Humanoid.DisplayName);
+    
+    })
+    end
+    elseif not Locking then
+         if getgenv().ChatMode then
+        local A_1 = "Unlocked!" local A_2 = "All" local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest Event:FireServer(A_1, A_2) 
+        	end	
+        if getgenv().NotifMode then
+                        game.StarterGui:SetCore("SendNotification", {
+                   Title = "funxpyware.cc",
+                   Text = "Unlocked",
+                   Duration = 5
+               })
+           elseif getgenv().Target == false then
+                        game.StarterGui:SetCore("SendNotification", {
+                   Title = "",
+                   Text = "Target left or died.",
+                   Duration = 5
+     
+                   })
+               
+               end
+                  
+ 
+ end     end   
+end
+end
+end)
+	
+	function getClosestPlayerToCursor()
+		local closestPlayer
+		local shortestDistance = circle.Radius
+
+		for i, v in pairs(game.Players:GetPlayers()) do
+			if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("LowerTorso") then
+				local pos = CC:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+				local magnitude = (Vector2.new(pos.X, pos.Y) - Vector2.new(LocalMouse.X, LocalMouse.Y)).magnitude
+				if magnitude < shortestDistance then
+					closestPlayer = v
+					shortestDistance = magnitude
+				end
+			end
+		end
+		return closestPlayer
+	end
+--
+if getgenv().PartMode then
+	game:GetService"RunService".Stepped:connect(function()
+		if Locking and Plr.Character and Plr.Character:FindFirstChild("LowerTorso") then
+			Tracer.CFrame = CFrame.new(Plr.Character.LowerTorso.Position+(Plr.Character.LowerTorso.Velocity*Prediction))
+		else
+			Tracer.CFrame = CFrame.new(0, 9999, 0)
+		end
+	end)
+end
+
+    
+    
+    --
+	local rawmetatable = getrawmetatable(game)
+	local old = rawmetatable.__namecall
+	setreadonly(rawmetatable, false)
+	rawmetatable.__namecall = newcclosure(function(...)
+		local args = {...}
+		if Locking and getnamecallmethod() == "FireServer" and args[2] == "UpdateMousePos" then
+			args[3] = Plr.Character[getgenv().Partz].Position+(Plr.Character[getgenv().Partz].Velocity*Prediction)
+			return old(unpack(args))
+		end
+		return old(...)
+	end)
+---
+	while wait() do
+	if getgenv().AutoPrediction == true then
+        local pingvalue = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+        local split = string.split(pingvalue,'(')
+        local ping = tonumber(split[1])
+        if ping < 130 then
+            getgenv().Prediction = 0.151
+        elseif ping < 125 then
+            getgenv().Prediction = 0.149
+        elseif ping < 110 then
+            getgenv().Prediction = 0.140
+        elseif ping < 105 then
+            getgenv().Prediction = 0.133
+        elseif ping < 90 then
+            getgenv().Prediction = 0.130
+        elseif ping < 80 then
+            getgenv().Prediction = 0.128
+        elseif ping < 70 then
+            getgenv().Prediction = 0.1230
+        elseif ping < 60 then
+            getgenv().Prediction = 0.1229
+        elseif ping < 50 then
+            getgenv().Prediction = 0.1225
+        elseif ping < 40 then
+            getgenv().Prediction = 0.1256
+        end
+	end
+    end
+    end,
+ })
+
+
+ local Tab = Window:CreateTab("Universal", 4483362458) -- Title, Image
+
+ local Button = Tab:CreateButton({
+    Name = "Star Oddyssey's Tracers (H to toggle)",
+    Callback = function()
+
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/zaza135/Furry-infection-kill-aura/main/Aura'))() 
+        
+
+      end,
+ })
+--universal
+
+ local Button = Tab:CreateButton({
+    Name = "Infinite Yield",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "DomainX(Key System)",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/DomainX/main/source',true))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "CMDX",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source",true))()
+      end,
+ })
+
+
+ local Tab = Window:CreateTab("Shaders", 4483362458) -- Title, Image
+ 
+ local Button = Tab:CreateButton({
+    Name = "Shaders",
+    Callback = function()
+        loadstring(game:HttpGet("https://itots.tk/zaphub/ZapHubFreeVersion",true))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Shaders 2",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/Bkf0BJb3",true))()
+      end,
+ })
+ --Fun
+
+
+ local Tab = Window:CreateTab("Fun", 4483362458) -- Title, Image
+
+ local Button = Tab:CreateButton({
+    Name = "FE Shazam (say Shazam! in chat)",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/kzdMp1HN",true))()
+      end,
+ })
+
+ 
+
+
+ local Button = Tab:CreateButton({
+    Name = "Reverse Flash",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/Kp23VUL3",true))()
+      end,
+ })
+
+ local Button = Tab:CreateButton({
+    Name = "Fe spiderman",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/FqnGCLXA",true))()
+      end,
+ })
+
+ 
+ local Button = Tab:CreateButton({
+    Name = "Fe aniamtion pack 2",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/x1AyjLaR",true))()
+      end,
+ })
+
+ local Tab = Window:CreateTab("Chat Bypass", 4483362458) -- Title, Image
+
+ local Button = Tab:CreateButton({
+    Name = "work in progress",
+    Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/JUVZCCrt",true))()
+      end,
+ })
+
+
+Rayfield:LoadConfiguration()
+
